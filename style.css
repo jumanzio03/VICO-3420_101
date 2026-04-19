@@ -1,0 +1,16 @@
+/* Updated Logo Style */
+.logo-header {
+    display: block;
+    margin: 0 auto 30px; /* Centers the logo */
+    
+    /* SIZE: Increase these numbers to make it bigger */
+    width: 80%; 
+    max-width: 800px; 
+    
+    /* CODE BACKGROUND REMOVAL: 
+       'multiply' makes white backgrounds transparent against the green grid. */
+    mix-blend-mode: multiply; 
+    
+    
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.1));
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap It | Craft Trading Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            background: url('images/cutting-mat.jpg') no-repeat center top fixed;
+            background-size: cover;
+            padding-top: 100px;
+            color: white; 
+        }
+
+        .custom-nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #2d5a4c;
+        }
+
+        .custom-nav a {
+            color: #2d5a4c;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 20px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .logo-header {
+            display: block;
+            margin: 0 auto 50px;
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* box style */
+        .color-box {
+            padding: 60px 50px; 
+            margin-bottom: 60px;
+            min-height: 400px;
+            border-radius: 25px; 
+            box-shadow: 8px 8px 15px rgba(0,0,0,0.2);
+            color: white; 
+        }
+
+        /* Diff colors for each box */
+        .box-orange { background-color: #e67e33; }
+        .box-teal { background-color: #6da09a; }
+        .box-moss { background-color: #a4ad64; }
+        .box-blue { background-color: #5c72f2; }
+
+        h2 { 
+            font-weight: 700;
+            text-transform: lowercase;
+            border-bottom: 2px solid white;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .supply-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .supply-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-trade {
+            background-color: white;
+            color: #2d5a4c;
+            border: none;
+            padding: 10px 35px;
+            font-weight: bold;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        
+    
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid white;
+            color: white;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-color: white;
+            box-shadow: none;
+        }
+
+        .focus-mode {
+            filter: grayscale(0.8) contrast(1.2);
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+    <nav class="custom-nav fixed-top">
+        <a href="#post">New Items</a>
+        <a href="#browse">Trading Post</a>
+        <a href="#how">How To</a>
+    </nav>
+
+
+
+
+    <div class="container" style="max-width: 850px; margin-top: 140px;">
+        
+        <img src="images/scrap-it-logo.png" alt="Scrap It Logo" class="logo-header">
+
+
+
+        <div id="post" class="color-box box-orange">
+            <h2> post a scrap </h2>
+            <p>Let's Trade!! Describe your craft item below.</p>
+            <input type="text" id="itemName" class="form-control mb-3" placeholder="Item Name">
+            <textarea id="itemDesc" class="form-control mb-3" rows="3" placeholder="Tell its story..."></textarea>
+            <button onclick="addItem()" class="btn btn-trade">list for trade</button>
+        </div>
+
+        <div id="browse" class="color-box box-teal">
+            <h2> the trading post </h2>
+
+
+            <div id="supplyList">
+                <div class="supply-item" ondblclick="claimItem(this)">
+                    <b>Cardstock Paper Scraps</b> - lots of textures & colors
+                </div>
+                <div class="supply-item" ondblclick="claimItem(this)">
+                    <b>Miniature Figurines</b> - 1970's comic characters
+                </div>
+            </div>
+        </div>
+
+        <div id="how" class="color-box box-moss text-center">
+            <h2> your craft status </h2>
+            <p>Enter username to check your exchange history:</p>
+            <input type="text" id="idSearch" class="form-control mb-4" placeholder="Julia Umanzio">
+            
+        </div>
+
+        <div class="color-box box-blue text-center">
+            <h2> fun toggle button</h2>
+            <p>Thanks for visiting... Scrap It! </p>
+            <button id="focusToggle" class="btn btn-trade">Fun Mode</button>
+        </div>
+
+    </div>
+
+    <script>
+        function addItem() {
+            const name = document.getElementById('itemName').value;
+            const list = document.getElementById('supplyList');
+            if(name) {
+                const div = document.createElement('div');
+                div.className = "supply-item";
+                div.innerHTML = `<b>${name}</b> - just added to the board`;
+                list.prepend(div);
+                document.getElementById('itemName').value = "";
+                alert("Listed!");
+            }
+        }
+
+        function claimItem(element) {
+            element.style.textDecoration = "line-through";
+            element.style.opacity = "0.6";
+            alert("Item claimed!");
+        }
+
+        document.getElementById('idSearch').addEventListener('keyup', function() {
+            console.log("Searching: " + this.value);
+        });
+
+        document.getElementById('focusToggle').addEventListener('click', function() {
+            document.body.classList.toggle('focus-mode');
+        });
+
+        window.addEventListener('scroll', function() {
+            // Interaction tracking
+        });
+    </script>
+</body>
+</html>
