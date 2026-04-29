@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5 Quiz - Travel Preferences</title>
+    <style>
+        /* Simple student-style CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #333;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        #result-text {
+            line-height: 1.5;
+            color: #444;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Travel Sync Preference Quiz</h1>
+        <div id="result-text"></div>
+    </div>
+
+    <script>
+        // We wrap this in a function so it runs after the page loads
+        window.onload = function() {
+            
+            // TASK: Create 3 variables and get info from prompts
+            var userDestination = prompt("Where do you want to go for your next trip?");
+            var userBudget = prompt("What is your budget? (Please enter a number)");
+            var userVibe = prompt("Choose a style: Relaxing, Adventurous, or Luxury");
+
+            var display = document.getElementById("result-text");
+            var finalOutput = "";
+
+            // TASK: Simple IF statement
+            if (userDestination == "Athens") {
+                finalOutput += "<p><strong>Note:</strong> Athens is a great choice! Go Bobcats!</p>";
+            }
+
+            // TASK: IF...ELSE statement
+            if (userBudget >= 1000) {
+                finalOutput += "<p>Budget Check: You have enough for a big trip.</p>";
+            } else {
+                finalOutput += "<p>Budget Check: You might want to look for local deals.</p>";
+            }
+
+            // TASK: IF...ELSE IF...ELSE statement
+            if (userVibe == "Relaxing") {
+                finalOutput += "<p>Style: You should check out some beach resorts.</p>";
+            } else if (userVibe == "Adventurous") {
+                finalOutput += "<p>Style: You should look into mountain hiking trips.</p>";
+            } else if (userVibe == "Luxury") {
+                finalOutput += "<p>Style: We recommend looking at 5-star hotels.</p>";
+            } else {
+                finalOutput += "<p>Style: Any travel style is a good style!</p>";
+            }
+
+            // BONUS: Switch Statement
+            var bonusMessage = "";
+            switch (userVibe) {
+                case "Relaxing":
+                    bonusMessage = "Don't forget your sunscreen.";
+                    break;
+                case "Adventurous":
+                    bonusMessage = "Make sure to pack good boots.";
+                    break;
+                case "Luxury":
+                    bonusMessage = "Remember to bring your fancy clothes.";
+                    break;
+                default:
+                    bonusMessage = "Have a safe flight!";
+            }
+            
+            // Putting it all together
+            finalOutput += "<p><strong>Final Tip:</strong> " + bonusMessage + "</p>";
+            display.innerHTML = finalOutput;
+        };
+    </script>
+</body>
+</html>
