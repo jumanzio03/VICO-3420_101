@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Tracker</title>
+    <style>
+        /* CSS stays here in the head */
+        body {
+            font-family: sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        button {
+            background: #6200ee;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Project Dashboard</h1>
+        <div id="display-area"></div>
+        <button onclick="updateStats()">Update Progress</button>
+    </div>
+
+    <script>
+        // JavaScript stays here at the bottom of the body
+        let projectName = "Scrap It App";
+        let tasksCompleted = 5;
+        let totalTasks = 12;
+
+        const displayArea = document.getElementById('display-area');
+
+        function render() {
+            displayArea.innerHTML = `
+                <p><strong>Project: ${projectName}</strong></p>
+                <p>Progress: ${tasksCompleted} / ${totalTasks}</p>
+                <p>Remaining: ${totalTasks - tasksCompleted}</p>
+            `;
+        }
+
+        function updateStats() {
+            projectName = "Scrap It - V2";
+            tasksCompleted += 1;
+            totalTasks = 15;
+            render();
+            alert("Dashboard Updated!");
+        }
+
+        // Run once on load
+        render();
+    </script>
+</body>
+</html>
