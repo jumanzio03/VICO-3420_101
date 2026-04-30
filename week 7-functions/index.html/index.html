@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Grow Girl - Function Lab</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fdfcf0;
+            color: #2d5a27;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .care-box {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            max-width: 450px;
+            margin: 0 auto;
+            border: 3px solid #81C784;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            color: #388E3C;
+        }
+
+        .button-group {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Fredoka One', cursive;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #1c6720;
+     }
+
+        #display-area {
+            margin-top: 20px;
+            font-weight: 600;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="care-box">
+        <h1>You Grow Girl</h1>
+        <p>Use the tools below to check your plant health!</p>
+
+        <div class="button-group">
+            <button onclick="welcomeMessage()">Daily Greeting</button>
+            <button onclick="checkPlantType()">Care Tip</button>
+            <button onclick="calculateWater()">Watering Math</button>
+        </div>
+
+        <div id="display-area">
+            </div>
+    </div>
+
+    <script>
+        var display = document.getElementById("display-area");
+
+        function welcomeMessage() {
+            var message = "Hello Plant Parent! Don't forget to talk to your greens today.";
+            display.innerHTML = "<p>" + message + "</p>";
+        }
+
+
+        // 2. FUNCTION WITH ONE PARAMETER (30 XP)
+        function getCareTip(plantName) {
+            var tip = "For your " + plantName + ", make sure the soil is dry before watering.";
+            display.innerHTML = "<p>" + tip + "</p>";
+        }
+
+        function checkPlantType() {
+            var userChoice = prompt("Which plant are you checking on?");
+            getCareTip(userChoice); // Call
+        }
+
+
+        function waterVolume(potSize, humidityLevel) {
+            var baseWater = potSize * 2;
+            var finalAmount = baseWater - humidityLevel;
+            
+            return finalAmount; // Returning information
+        }
+
+        function calculateWater() {
+            var size = prompt("What is the pot diameter in inches?");
+            var humidity = 5; // Hard-coded variable for simplicity
+            
+            var result = waterVolume(size, humidity); // Call with two arguments
+            
+            display.innerHTML = "<p>Your plant needs approximately " + result + "oz of water today.</p>";
+        }
+
+    </script>
+</body>
+</html>
