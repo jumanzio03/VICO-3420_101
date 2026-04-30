@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Grow Girl - Plant Care</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0f7f4;
+            color: #2d5a27;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 550px;
+            text-align: center;
+            border: 3px dashed #a8dadc;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3.5rem;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .menu-nav {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+
+        .menu-nav a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .plant-card {
+            margin-bottom: 40px;
+            padding: 15px;
+        }
+
+        .plant-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #388E3C;
+        }
+
+        .plant-img {
+            width: 180px; 
+            height: 180px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 6px solid #e8f5e9;
+            transition: transform 0.3s ease;
+        }
+
+        .plant-img:hover {
+            transform: scale(1.05);
+            border-color: #81C784;
+        }
+
+        .care-tip {
+            font-style: italic;
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>You Grow Girl</h1>
+        
+        <nav class="menu-nav" id="top-menu"></nav>
+
+        <div id="plant-gallery"></div>
+    </div>
+
+    <script>
+        var menuLinks = [
+            ["Shop Plants", "https://www.thesill.com"],
+            ["Care Tips", "https://www.patchplants.com"],
+            ["Pottery", "https://www.anthropologie.com/garden-pots-planters"]
+        ];
+
+        var menuArea = document.getElementById("top-menu");
+        for (var item of menuLinks) {
+            menuArea.innerHTML += '<a href="' + item[1] + '" target="_blank">' + item[0] + '</a>';
+        }
+
+
+        var plants = ["Monstera", "Snake Plant", "Pothos", "Fiddle Leaf", "Aloe Vera"];
+        plants.sort();
+
+
+        var plantPhotos = [
+            "https://picsum.photos/id/106/400/400", // Monstera style
+            "https://picsum.photos/id/152/400/400", // Succulent style
+            "https://picsum.photos/id/211/400/400", // Pothos style
+            "https://picsum.photos/id/249/400/400", // Leafy style
+            "https://picsum.photos/id/306/400/400"  // Aloe style
+        ];
+
+
+        var gallery = document.getElementById("plant-gallery");
+
+        for (var i = 0; i < plants.length; i++) {
+            var cardHTML = '<div class="plant-card">' +
+                                '<div class="plant-name">' + plants[i] + '</div>' +
+                                '<a href="' + plantPhotos[i] + '" target="_blank">' +
+                                    '<img src="' + plantPhotos[i] + '" class="plant-img" alt="Photo of ' + plants[i] + '">' +
+                                '</a>' +
+                                '<p class="care-tip">Care Level: Easy & Beginner Friendly</p>' +
+                           '</div>';
+            
+            gallery.innerHTML += cardHTML;
+        }
+    </script>
+
+</body>
+</html>
